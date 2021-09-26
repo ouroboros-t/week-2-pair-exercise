@@ -2,7 +2,9 @@ package com.techelevator;
 
 import javax.management.DescriptorAccess;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.techelevator.Employee.salary;
 
@@ -10,7 +12,7 @@ import static com.techelevator.Employee.salary;
 public class Application {
     private List<Department> departments = new ArrayList<Department>();
     private List<Employee> employees = new ArrayList<Employee>();
-
+    private Map<String , Project> projects = new HashMap<String , Project>();
     /**
      * The main entry point in the application
      *
@@ -109,6 +111,8 @@ public class Application {
      * Create the 'TEams' project.
      */
     private void createTeamsProject() {
+    Project managementSoftware = new Project("TEams", "Project management software","10/10/2020", "11/10/2020");
+   // managementSoftware.getTeamMembers(employees.getdepa); NEED TO FIX
 
     }
 
