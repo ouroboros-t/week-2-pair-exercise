@@ -16,7 +16,7 @@ public class Employee {
     }
 
     //STATIC VARIABLE:
-    private static double salary = 60000.00;
+    public static double salary = 60000.00;
 
     //CONSTRUCTOR(S):
     public Employee(long employeeId, String firstName, String lastName, String email, Department department, String hireDate) {
@@ -90,7 +90,7 @@ public class Employee {
         Employee.salary = salary;
     }
     //METHODS:
-    public void raiseSalary(double percent) {
+    public static void raiseSalary(double percent) {
             double raisePercent = percent / 100.00;
             double salaryChange = salary * raisePercent;
             salary = salary + salaryChange;
