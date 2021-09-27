@@ -1,9 +1,7 @@
 package com.techelevator;
 
-import javax.management.DescriptorAccess;
 import java.util.*;
 
-import static com.techelevator.Employee.salary;
 
 
 public class Application {
@@ -33,7 +31,8 @@ public class Application {
         createEmployees();
 
         // give Angie a 10% raise, she is doing a great job!
-
+        Employee employeeAngie = employees.get(1);
+        employeeAngie.raiseSalary(10);
 
         // print all employees
         printEmployees();
@@ -100,7 +99,7 @@ public class Application {
     private void printEmployees() {
         System.out.println("\n------------- EMPLOYEES ------------------------------");
         for (Employee employeeInfo : employees) {
-            String employee = employeeInfo.getFullName() + " " + Employee.getSalary() + " " + employeeInfo.getDepartment().getName();
+            String employee = employeeInfo.getFullName() + " " + employeeInfo.getSalary() + " " + employeeInfo.getDepartment().getName();
             System.out.println(employee);
         }
     }

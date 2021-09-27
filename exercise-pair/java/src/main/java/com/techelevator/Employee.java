@@ -8,6 +8,7 @@ public class Employee {
     private String email;
     private Department department;
     private String hireDate;
+    private double salary;
 
     //DERIVED PROPERTIES:
     public String getFullName() {
@@ -16,7 +17,10 @@ public class Employee {
     }
 
     //STATIC VARIABLE:
-    public static double salary = 60000.00;
+    public static final double SALARY_DEFAULT = 60000.00;
+    //need to say "final" for this one;
+    //because its a constant, has to be in ALL_CAPS_WITH_UNDERSCORES
+
 
     //CONSTRUCTOR(S):
     public Employee(long employeeId, String firstName, String lastName, String email, Department department, String hireDate) {
@@ -26,6 +30,7 @@ public class Employee {
         this.email = email;
         this.department = department;
         this.hireDate = hireDate;
+        this.salary = SALARY_DEFAULT;
 
     }
 
@@ -82,18 +87,18 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public static double getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public static void setSalary(double salary) {
-        Employee.salary = salary;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
     //METHODS:
-    public static void raiseSalary(double percent) {
+    public void raiseSalary(double percent) {
             double raisePercent = percent / 100.00;
-            double salaryChange = salary * raisePercent;
-            salary = salary + salaryChange;
+            double salaryChange = this.salary * raisePercent;
+             this.salary = this.salary + salaryChange;
     }
 
 
