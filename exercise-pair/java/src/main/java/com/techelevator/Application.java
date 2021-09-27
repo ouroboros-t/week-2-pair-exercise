@@ -3,7 +3,6 @@ package com.techelevator;
 import java.util.*;
 
 
-
 public class Application {
     private List<Department> departments = new ArrayList<Department>();
     private List<Employee> employees = new ArrayList<Employee>();
@@ -84,11 +83,6 @@ public class Application {
         employees.add(1, employeeAngie);
         employees.add(2, employeeMargaret);
 
-        //Is this correct to be here? How do we differentiate a static variable?
-//        employeeAngie.raiseSalary(10);
-//        System.out.println(Employee.getSalary());
-
-        //FIX THIS: All employees have Angie's salary :(
 
     }
 
@@ -115,7 +109,7 @@ public class Application {
         projects.put("Management Software", managementSoftware);
 
 
-        System.out.println(managementSoftware.getTeamMembers().size());
+       
     }
 
     /**
@@ -123,6 +117,10 @@ public class Application {
      */
     private void createLandingPageProject() {
         Project landingPage = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", "10/10/2020", "10/17/2020");
+        landingPage.getTeamMembers().add(employees.get(2));
+        projects.put("Marketing Landing Page", landingPage);
+
+
         //add employee to project
         //add project to map of projects
     }
@@ -133,11 +131,11 @@ public class Application {
     private void printProjectsReport() {
         System.out.println("\n------------- PROJECTS ------------------------------");
         Set<String> projectKeys = projects.keySet();
-        for(String projectInfo : projectKeys){
-            System.out.println(projects.get(projectInfo).getName()+ ": " + projects.get(projectInfo).getTeamMembers().size());
+        for (String projectInfo : projectKeys) {
+            //  System.out.println(projects.get(projectInfo).getName() + " : " + projects.get(projectInfo).getTeamMembers().size());
         }
-        //System.out.println(projects.get("Management Software").getName()+": " + projects.get("Management Software").getTeamMembers().size());
-
+        System.out.println(projects.get("Management Software").getName() + ": " + projects.get("Management Software").getTeamMembers().size());
+        System.out.println(projects.get("Marketing Landing Page").getName() + ": " + projects.get("Marketing Landing Page").getTeamMembers().size());
     }
 
 }
