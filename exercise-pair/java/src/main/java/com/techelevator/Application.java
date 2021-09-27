@@ -133,8 +133,11 @@ public class Application {
      */
     private void printProjectsReport() {
         System.out.println("\n------------- PROJECTS ------------------------------");
-        //for each loop for map
-        System.out.println(projects.get("Management Software").getName()+": " + projects.get("Management Software").getTeamMembers().size());
+        Set<String> projectKeys = projects.keySet();
+        for(String projectInfo : projectKeys){
+            System.out.println(projects.get(projectInfo).getName()+ ": " + projects.get(projectInfo).getTeamMembers().size());
+        }
+        //System.out.println(projects.get("Management Software").getName()+": " + projects.get("Management Software").getTeamMembers().size());
 
     }
 
