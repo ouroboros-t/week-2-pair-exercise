@@ -1,10 +1,7 @@
 package com.techelevator;
 
 import javax.management.DescriptorAccess;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.techelevator.Employee.salary;
 
@@ -12,7 +9,8 @@ import static com.techelevator.Employee.salary;
 public class Application {
     private List<Department> departments = new ArrayList<Department>();
     private List<Employee> employees = new ArrayList<Employee>();
-    private Map<String , Project> projects = new HashMap<String , Project>();
+    private Map<String, Project> projects = new HashMap<String, Project>();
+
     /**
      * The main entry point in the application
      *
@@ -79,12 +77,12 @@ public class Application {
      * Create employees and add them to the collection of employees
      */
     private void createEmployees() {
-        Employee employeeDean = new Employee(1,"Dean", "Johnson","djohnson@teams.com", departments.get(2), "08/21/2020");
-        Employee employeeAngie = new Employee(2,"Angie","Smith", "asmith@teams.com", departments.get(2),"08/21/2020");
-        Employee employeeMargaret = new Employee(3,"Margaret", "Thompson", "mthompson@teams.com", departments.get(0),"08/21/2020");
+        Employee employeeDean = new Employee(1, "Dean", "Johnson", "djohnson@teams.com", departments.get(2), "08/21/2020");
+        Employee employeeAngie = new Employee(2, "Angie", "Smith", "asmith@teams.com", departments.get(2), "08/21/2020");
+        Employee employeeMargaret = new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", departments.get(0), "08/21/2020");
 
         employees.add(0, employeeDean);
-        employees.add(1,employeeAngie);
+        employees.add(1, employeeAngie);
         employees.add(2, employeeMargaret);
 
         //Is this correct to be here? How do we differentiate a static variable?
@@ -101,8 +99,8 @@ public class Application {
      */
     private void printEmployees() {
         System.out.println("\n------------- EMPLOYEES ------------------------------");
-        for(Employee employeeInfo : employees) {
-            String employee = employeeInfo.getFullName() +" " + Employee.getSalary() + " " + employeeInfo.getDepartment().getName();
+        for (Employee employeeInfo : employees) {
+            String employee = employeeInfo.getFullName() + " " + Employee.getSalary() + " " + employeeInfo.getDepartment().getName();
             System.out.println(employee);
         }
     }
@@ -111,16 +109,23 @@ public class Application {
      * Create the 'TEams' project.
      */
     private void createTeamsProject() {
-    Project managementSoftware = new Project("TEams", "Project management software","10/10/2020", "11/10/2020");
-   // managementSoftware.getTeamMembers(employees.getdepa); NEED TO FIX
+        Project managementSoftware = new Project("TEams", "Project management software", "10/10/2020", "11/10/2020");
+        // assign engineering department to team
+        managementSoftware.getTeamMembers().add(employees.get(0));
+        managementSoftware.getTeamMembers().add(employees.get(1));
+        projects.put("Management Software", managementSoftware);
 
+
+        System.out.println(managementSoftware.getTeamMembers().size());
     }
 
     /**
      * Create the 'Marketing Landing Page' project.
      */
     private void createLandingPageProject() {
-
+        Project landingPage = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", "10/10/2020", "10/17/2020");
+        //add employee to project
+        //add project to map of projects
     }
 
     /**
@@ -128,6 +133,8 @@ public class Application {
      */
     private void printProjectsReport() {
         System.out.println("\n------------- PROJECTS ------------------------------");
+        //for each loop for map
+        System.out.println(projects.get("Management Software").getName()+": " + projects.get("Management Software").getTeamMembers().size());
 
     }
 
